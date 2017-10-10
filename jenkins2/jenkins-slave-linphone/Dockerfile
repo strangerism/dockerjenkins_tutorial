@@ -9,7 +9,7 @@ RUN chgrp -R jenkins /home/jenkins
 RUN chown -R jenkins /opt
 
 # Add the jenkins user to sudoers
-RUN echo "jenkins    ALL=(ALL)    ALL" >> etc/sudoers
+#RUN echo "jenkins    ALL=(ALL)    ALL" >> etc/sudoers
 
 # Set Name Servers
 COPY /files/resolv.conf /etc/resolv.conf
