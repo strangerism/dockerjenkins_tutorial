@@ -16,6 +16,8 @@ nginx:
   - master:jenkins-master
 slave:
  build: jenkins-slave
+slave-linphone:
+ build: jenkins-slave-linphone
 proxy:
  image: ehazlett/docker-proxy:latest
  command: -i
