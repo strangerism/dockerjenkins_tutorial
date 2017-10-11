@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
  aptitude
 
 RUN dpkg --add-architecture i386
+
 RUN aptitude update && aptitude install -y \
  libstdc++6:i386 \
  libgcc1:i386 \
@@ -78,15 +79,15 @@ ENV PATH $PATH:$ANDROID_NDK_HOME
 
 # install cmake 3.9.4
 RUN apt-get purge cmake && \
-	mkdir ~/temp && \
-	cd ~/temp && \
+	mkdir $HOME/temp && \
+	cd $HOME/temp && \
 	wget https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz && \
 	tar -xzvf cmake-3.9.4.tar.gz \
 	&& cd cmake-3.9.4/ && \
 	./bootstrap && \
 	make -j4 && \
 	make install && \
-	cd ~ && \
+	cd $HOME && \
 	rm -R cmake-3.9.4/
 
 # Set Name Servers
