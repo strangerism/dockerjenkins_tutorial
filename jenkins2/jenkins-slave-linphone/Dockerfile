@@ -103,7 +103,12 @@ COPY /files/resolv.conf /etc/resolv.conf
 # Install linphone
 
 RUN git clone https://github.com/BelledonneCommunications/linphone-android.git
-RUN cd linphone-android && git checkout -b 3.2.7
-RUN cd linphone-android && git submodule sync && git submodule update --init --recursive
+RUN cd linphone-android && \
+	git checkout 3.2.7 && \
+	git submodule sync && git submodule update --init --recursive
 
+RUN echo y | android update sdk -u -a -t build-tools-25.0.2 && \
+	echo y | android update sdk -u -a -t android-23
+RUN cd linphone-android && ./prepare.py 
 
+RUN cd linphone-android && make 
