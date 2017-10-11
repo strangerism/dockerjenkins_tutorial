@@ -65,6 +65,10 @@ RUN curl https://dl.google.com/android/android-sdk_r${ANDROID_SDK_TOOLS}-linux.t
  && echo no | $ANDROID_HOME/tools/android create avd -n test -t android-${ANDROID_COMPILE_SDK} --abi google_apis/x86
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
+# adding gradle dependencies
+RUN echo y | android update sdk -u -a -t build-tools-25.0.2 && \
+	echo y | android update sdk -u -a -t android-23
+
 # Add android-wait-for-emulator executable
 RUN mkdir -p bin \
  && cd bin \
@@ -102,13 +106,11 @@ COPY /files/resolv.conf /etc/resolv.conf
 
 # Install linphone
 
-RUN git clone https://github.com/BelledonneCommunications/linphone-android.git
-RUN cd linphone-android && \
-	git checkout 3.2.7 && \
-	git submodule sync && git submodule update --init --recursive
+# RUN git clone https://github.com/BelledonneCommunications/linphone-android.git
+# RUN cd linphone-android && \
+# 	git checkout 3.2.7 && \
+# 	git submodule sync && git submodule update --init --recursive
 
-RUN echo y | android update sdk -u -a -t build-tools-25.0.2 && \
-	echo y | android update sdk -u -a -t android-23
-RUN cd linphone-android && ./prepare.py 
+# RUN cd linphone-android && ./prepare.py 
 
-RUN cd linphone-android && make 
+# RUN cd linphone-android && make 
