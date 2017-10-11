@@ -30,7 +30,7 @@ RUN aptitude update && aptitude install -y \
  libncurses5:i386
 
 # install cmake 3.9.4
-RUN apt-get purge cmake && \
+RUN apt-get purge -y cmake && \
 	mkdir ~/temp && \
 	cd ~/temp && \
 	wget https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz && \
