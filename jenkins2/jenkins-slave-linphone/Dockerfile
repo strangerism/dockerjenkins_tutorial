@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
  nasm \
  ant \
  python \
+ cmake \
  vim-common \
  patch \
  pkg-config \
