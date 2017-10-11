@@ -103,7 +103,7 @@ COPY /files/resolv.conf /etc/resolv.conf
 # Install linphone
 
 RUN git clone https://github.com/BelledonneCommunications/linphone-android.git && cd linphone-android 
-RUN git checkout 3.2.7
-RUN git submodule sync && git submodule update --init --recursive
+RUN cd linphone-android && git checkout 3.2.7
+RUN cd linphone-android && git submodule sync && git submodule update --init --recursive
 
 
