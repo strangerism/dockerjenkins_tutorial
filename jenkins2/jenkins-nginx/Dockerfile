@@ -20,6 +20,6 @@ RUN rm /etc/nginx/conf.d/example_ssl.conf
 COPY conf/jenkins.conf /etc/nginx/conf.d/jenkins.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 80
+EXPOSE 85
 
 CMD ["nginx"]
