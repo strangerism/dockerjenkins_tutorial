@@ -114,3 +114,4 @@ COPY /files/resolv.conf /etc/resolv.conf
 # RUN cd linphone-android && ./prepare.py 
 
 # RUN cd linphone-android && make 
+#
