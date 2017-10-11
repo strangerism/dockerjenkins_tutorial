@@ -35,11 +35,13 @@ RUN apt-get purge cmake && \
 	wget https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz && \
 	tar -xzvf cmake-3.9.4.tar.gz \
 	&& cd cmake-3.9.4/ && \
-RUN	./bootstrap
-RUN	make -j4
-RUN	make install
-RUN	cd ~ && \
-	rm -R temp
+RUN	cd ~/temp/cmake-3.9.4/ && \
+	./bootstrap
+RUN	cd ~/temp/cmake-3.9.4/ && \
+	make -j4
+RUN	cd ~/temp/cmake-3.9.4/ && \
+	make install
+RUN rm -R temp
 
 
 # Create Jenkins User
