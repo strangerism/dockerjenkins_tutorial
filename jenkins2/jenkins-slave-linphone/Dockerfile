@@ -38,7 +38,7 @@ RUN apt-get purge -y cmake && \
 	cd cmake-3.9.4/
 	
 RUN	cd ~/temp/cmake-3.9.4/ && \
-	./bootstrap
+	./bootstrap && cat /root/temp/cmake-3.9.4/Bootstrap.cmk/cmake_bootstrap.log
 RUN	cd ~/temp/cmake-3.9.4/ && \
 	make -j4
 RUN	cd ~/temp/cmake-3.9.4/ && \
