@@ -29,22 +29,6 @@ RUN aptitude update && aptitude install -y \
  zlib1g:i386 \
  libncurses5:i386
 
-# install cmake 3.9.4
-RUN apt-get purge -y cmake && \
-	mkdir ~/temp && \
-	cd ~/temp && \
-	wget https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz && \
-	tar -xzvf cmake-3.9.4.tar.gz && \
-	cd cmake-3.9.4/
-RUN cat /root/temp/cmake-3.9.4/Bootstrap.cmk/cmake_bootstrap.log 	
-RUN	cd ~/temp/cmake-3.9.4/ && \
-	./bootstrap
-RUN	cd ~/temp/cmake-3.9.4/ && \
-	make -j4
-RUN	cd ~/temp/cmake-3.9.4/ && \
-	make install
-RUN rm -R temp
-
 
 # Create Jenkins User
 RUN useradd jenkins -m -s /bin/bash
@@ -95,6 +79,23 @@ RUN curl https://dl.google.com/android/repository/android-ndk-r12b-linux-x86_64.
 ENV ANDROID_NDK_HOME $HOME/android-ndk-r12b
 ENV PATH $PATH:$ANDROID_NDK_HOME
 
+USER root
+# install cmake 3.9.4
+RUN apt-get purge -y cmake && \
+	mkdir ~/temp && \
+	cd ~/temp && \
+	wget https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz && \
+	tar -xzvf cmake-3.9.4.tar.gz && \
+	cd cmake-3.9.4/
+RUN	cd ~/temp/cmake-3.9.4/ && \
+	./bootstrap
+RUN	cd ~/temp/cmake-3.9.4/ && \
+	make -j4
+RUN	cd ~/temp/cmake-3.9.4/ && \
+	make install
+RUN rm -R temp
+
+USER jenkins
 
 # Set Name Servers
 COPY /files/resolv.conf /etc/resolv.conf
