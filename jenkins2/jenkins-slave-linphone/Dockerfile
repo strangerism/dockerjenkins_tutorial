@@ -33,8 +33,10 @@ RUN apt-get purge cmake && \
 	mkdir ~/temp && \
 	cd ~/temp && \
 	wget https://cmake.org/files/v3.9/cmake-3.9.4.tar.gz && \
-	tar -xzvf cmake-3.9.4.tar.gz \
-	&& cd cmake-3.9.4/ && \
+	tar -xzvf cmake-3.9.4.tar.gz && \
+	cd cmake-3.9.4/ && \
+	pwd
+	
 RUN	cd ~/temp/cmake-3.9.4/ && \
 	./bootstrap
 RUN	cd ~/temp/cmake-3.9.4/ && \
